@@ -5,7 +5,7 @@ const fs = require("fs")
 const path = require("path")
 
 const MONGO_URI = process.env.MONGO_URI
-const MONGO_DB = process.env.MONGO_DB || ""
+const MONGO_DB = process.env.MONGO_DB || "reycode_unlock"
 const TURNSTILE_SITE_KEY = process.env.TURNSTILE_SITE_KEY || ""
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY || ""
 
