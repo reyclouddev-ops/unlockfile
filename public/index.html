@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07080b">
+<title>ReyCode Unlock</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+* {
+box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+margin: 0;
+background: #07080b;
+}
+
+.grid-bg {
+background-image:
+linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+background-size: 42px 42px;
+mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+-webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+}
+
+.glass {
+background: rgba(255,255,255,.035);
+border: 1px solid rgba(255,255,255,.07);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+}
+
+.glass-hover {
+transition: .25s ease;
+}
+
+.glass-hover:hover {
+transform: translateY(-4px);
+border-color: rgba(103,232,249,.18);
+background: rgba(255,255,255,.055);
+box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
+.glow-text {
+text-shadow: 0 0 40px rgba(103,232,249,.12);
+}
+
+.float {
+animation: float 6s ease-in-out infinite;
+}
+
+.float-delay {
+animation: float 7s ease-in-out infinite;
+animation-delay: -2s;
+}
+
+.fade-up {
+animation: fadeUp .7s ease both;
+}
+
+.fade-up-delay {
+animation: fadeUp .7s ease .15s both;
+}
+
+.fade-up-delay-2 {
+animation: fadeUp .7s ease .3s both;
+}
+
+.fade-up-delay-3 {
+animation: fadeUp .7s ease .45s both;
+}
+
+.shine {
+background: linear-gradient(
+110deg,
+#fff 0%,
+#cbd5e1 35%,
+#fff 50%,
+#cbd5e1 65%,
+#fff 100%
+);
+background-size: 200% 100%;
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+animation: shine 4s linear infinite;
+}
+
+@keyframes float {
+0%,100% {
+transform: translateY(0);
+}
+50% {
+transform: translateY(-18px);
+}
+}
+
+@keyframes fadeUp {
+from {
+opacity: 0;
+transform: translateY(18px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes shine {
+from {
+background-position: -200% 0;
+}
+to {
+background-position: 200% 0;
+}
+}
+
+::-webkit-scrollbar {
+width: 7px;
+}
+
+::-webkit-scrollbar-track {
+background: #07080b;
+}
+
+::-webkit-scrollbar-thumb {
+background: #25272c;
+border-radius: 999px;
+}
+
+::selection {
+background: rgba(34,211,238,.25);
+}
+</style>
+</head>
+
+<body class="min-h-screen text-white">
+
+<div class="relative min-h-screen overflow-hidden">
+
+<div class="pointer-events-none absolute inset-0 grid-bg"></div>
+
+<div class="pointer-events-none absolute -top-48 -left-40 h-[520px] w-[520px] rounded-full bg-cyan-500/[.08] blur-[120px] float"></div>
+
+<div class="pointer-events-none absolute top-[30%] -right-48 h-[600px] w-[600px] rounded-full bg-blue-500/[.07] blur-[130px] float-delay"></div>
+
+<div class="pointer-events-none absolute bottom-0 left-[30%] h-[420px] w-[420px] rounded-full bg-cyan-500/[.04] blur-[120px]"></div>
+
+<main class="relative mx-auto max-w-7xl px-4 sm:px-6">
+
+<nav class="flex h-[72px] items-center justify-between border-b border-white/[.07]">
+
+<a href="/" class="group flex items-center gap-3">
+
+<div class="relative flex h-10 w-10 items-center justify-center rounded-xl bg-white text-lg font-black text-black shadow-xl shadow-cyan-500/[.06]">
+R
+</div>
+
+<div>
+<div class="text-[16px] font-black tracking-tight">
+ReyCode<span class="text-cyan-300">.</span>
+</div>
+
+<div class="text-[8px] tracking-[.3em] text-zinc-600">
+UNLOCK
+</div>
+</div>
+
+</a>
+
+<div class="flex items-center gap-2">
+
+<div class="hidden items-center gap-2 rounded-xl border border-white/[.06] bg-white/[.025] px-3 py-2 text-[10px] text-zinc-500 sm:flex">
+<span class="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400"></span>
+SYSTEM ONLINE
+</div>
+
+<a
+href="/create"
+class="rounded-xl bg-white px-4 py-2.5 text-sm font-bold text-black transition hover:bg-zinc-200 active:scale-[.98]"
+>
+Create Link
+</a>
+
+</div>
+
+</nav>
+
+<section class="relative py-20 sm:py-28 lg:py-32">
+
+<div class="max-w-4xl">
+
+<div class="fade-up inline-flex items-center gap-2 rounded-full border border-cyan-400/10 bg-cyan-400/[.04] px-3.5 py-2 text-xs text-cyan-200">
+
+<span class="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-300"></span>
+
+<span id="greeting">
+Selamat malam, Dev
+</span>
+
+</div>
+
+<div class="fade-up-delay mt-6">
+
+<div class="mb-4 text-xs font-semibold uppercase tracking-[.25em] text-zinc-600">
+Link Gateway Platform
+</div>
+
+<h1 class="glow-text text-5xl font-black tracking-[-.04em] sm:text-7xl lg:text-8xl">
+
+<span class="block">
+ReyCode
+</span>
+
+<span class="shine block">
+Unlock.
+</span>
+
+</h1>
+
+</div>
+
+<p class="fade-up-delay-2 mt-7 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
+
+Buat link unlock sendiri dengan requirement
+WhatsApp, Instagram, Telegram, YouTube, TikTok,
+atau URL custom sebelum konten dibuka.
+
+</p>
+
+<div class="fade-up-delay-3 mt-8 flex flex-wrap gap-3">
+
+<a
+href="/create"
+class="group inline-flex items-center gap-3 rounded-2xl bg-white px-6 py-3.5 font-bold text-black transition hover:bg-zinc-200 active:scale-[.98]"
+>
+
+Mulai Membuat
+
+<span class="transition group-hover:translate-x-1">
+→
+</span>
+
+</a>
+
+<a
+href="#cara-kerja"
+class="inline-flex items-center rounded-2xl border border-white/[.08] bg-white/[.035] px-6 py-3.5 font-semibold text-white transition hover:bg-white/[.07]"
+>
+Cara Kerja
+</a>
+
+</div>
+
+<div class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3 text-[11px] text-zinc-600">
+
+<div class="flex items-center gap-2">
+<span class="text-cyan-300">✓</span>
+No account required
+</div>
+
+<div class="flex items-center gap-2">
+<span class="text-cyan-300">✓</span>
+Custom requirements
+</div>
+
+<div class="flex items-center gap-2">
+<span class="text-cyan-300">✓</span>
+Fast unlock gateway
+</div>
+
+</div>
+
+</div>
+
+<div class="pointer-events-none absolute right-0 top-24 hidden w-[310px] lg:block">
+
+<div class="glass rounded-[28px] p-5 shadow-2xl shadow-black/20 float">
+
+<div class="flex items-center justify-between">
+
+<div class="flex items-center gap-2">
+
+<div class="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-sm font-black text-black">
+R
+</div>
+
+<div>
+<div class="text-xs font-bold">
+ReyCode Unlock
+</div>
+
+<div class="mt-1 text-[9px] text-zinc-600">
+Gateway Preview
+</div>
+</div>
+
+</div>
+
+<div class="h-2 w-2 rounded-full bg-emerald-400"></div>
+
+</div>
+
+<div class="my-5 h-px bg-white/[.05]"></div>
+
+<div class="text-center">
+
+<div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-400/[.06] text-2xl">
+🔒
+</div>
+
+<div class="mt-4 text-sm font-bold">
+Complete Requirements
+</div>
+
+<div class="mt-1 text-[10px] text-zinc-600">
+Unlock protected content
+</div>
+
+</div>
+
+<div class="mt-5 space-y-2">
+
+<div class="glass flex items-center gap-3 rounded-xl p-3">
+
+<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-400/[.07]">
+💬
+</div>
+
+<div class="flex-1">
+<div class="text-[10px] font-semibold">
+WhatsApp
+</div>
+
+<div class="mt-1 text-[9px] text-zinc-700">
+Requirement
+</div>
+</div>
+
+<div class="text-[10px] text-zinc-700">
+→
+</div>
+
+</div>
+
+<div class="glass flex items-center gap-3 rounded-xl p-3">
+
+<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-red-400/[.07]">
+▶️
+</div>
+
+<div class="flex-1">
+<div class="text-[10px] font-semibold">
+YouTube
+</div>
+
+<div class="mt-1 text-[9px] text-zinc-700">
+Requirement
+</div>
+</div>
+
+<div class="text-[10px] text-zinc-700">
+→
+</div>
+
+</div>
+
+</div>
+
+<div class="mt-3 flex h-10 items-center justify-center rounded-xl bg-white/[.025] text-[9px] font-bold tracking-wider text-zinc-700">
+LOCKED
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="cara-kerja" class="pb-20 sm:pb-24">
+
+<div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+
+<div>
+
+<div class="text-[10px] font-semibold uppercase tracking-[.25em] text-cyan-300/70">
+Simple Flow
+</div>
+
+<h2 class="mt-3 text-2xl font-black sm:text-3xl">
+Cara kerja ReyCode Unlock
+</h2>
+
+</div>
+
+<div class="max-w-md text-sm leading-6 text-zinc-600">
+Tiga langkah sederhana untuk membuat gateway link.
+</div>
+
+</div>
+
+<div class="grid gap-4 md:grid-cols-3">
+
+<div class="glass glass-hover rounded-3xl p-6">
+
+<div class="flex items-center justify-between">
+
+<div class="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-400/[.06] text-xs font-black text-cyan-300">
+01
+</div>
+
+<span class="text-zinc-700">
+✦
+</span>
+
+</div>
+
+<h2 class="mt-6 text-xl font-bold">
+Buat Link
+</h2>
+
+<p class="mt-2 text-sm leading-6 text-zinc-500">
+Masukkan judul, konten, dan requirement yang ingin digunakan.
+</p>
+
+</div>
+
+<div class="glass glass-hover rounded-3xl p-6">
+
+<div class="flex items-center justify-between">
+
+<div class="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-400/[.06] text-xs font-black text-cyan-300">
+02
+</div>
+
+<span class="text-zinc-700">
+✦
+</span>
+
+</div>
+
+<h2 class="mt-6 text-xl font-bold">
+Bagikan
+</h2>
+
+<p class="mt-2 text-sm leading-6 text-zinc-500">
+ReyCode menghasilkan link unlock yang siap dibagikan ke pengguna.
+</p>
+
+<div class="mt-4 inline-flex rounded-lg bg-black/30 px-3 py-2 font-mono text-[10px] text-zinc-600">
+/unlock/AbC12345
+</div>
+
+</div>
+
+<div class="glass glass-hover rounded-3xl p-6">
+
+<div class="flex items-center justify-between">
+
+<div class="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-400/[.06] text-xs font-black text-cyan-300">
+03
+</div>
+
+<span class="text-zinc-700">
+✦
+</span>
+
+</div>
+
+<h2 class="mt-6 text-xl font-bold">
+Unlock
+</h2>
+
+<p class="mt-2 text-sm leading-6 text-zinc-500">
+Pengunjung menyelesaikan langkah yang tersedia sebelum membuka konten.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="mb-20 overflow-hidden rounded-[30px] border border-white/[.07] bg-white/[.025]">
+
+<div class="relative grid gap-10 p-6 sm:p-8 lg:grid-cols-2 lg:p-10">
+
+<div class="pointer-events-none absolute -right-32 -top-32 h-72 w-72 rounded-full bg-cyan-400/[.05] blur-[90px]"></div>
+
+<div>
+
+<div class="text-[10px] font-semibold uppercase tracking-[.25em] text-zinc-600">
+Requirements
+</div>
+
+<h2 class="mt-3 text-2xl font-black sm:text-3xl">
+Bebas menentukan requirement
+</h2>
+
+<p class="mt-4 max-w-xl text-sm leading-7 text-zinc-500">
+
+Gunakan link WhatsApp Group, WhatsApp Channel,
+WhatsApp Number, Instagram, Telegram, YouTube,
+TikTok, atau URL custom.
+
+</p>
+
+<a
+href="/create"
+class="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-bold text-black transition hover:bg-zinc-200"
+>
+Tambah Requirement
+<span>→</span>
+</a>
+
+</div>
+
+<div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+
+<div class="glass glass-hover rounded-2xl p-4 text-center">
+<div class="text-2xl">💬</div>
+<div class="mt-2 text-xs text-zinc-400">WhatsApp</div>
+</div>
+
+<div class="glass glass-hover rounded-2xl p-4 text-center">
+<div class="text-2xl">📸</div>
+<div class="mt-2 text-xs text-zinc-400">Instagram</div>
+</div>
+
+<div class="glass glass-hover rounded-2xl p-4 text-center">
+<div class="text-2xl">✈️</div>
+<div class="mt-2 text-xs text-zinc-400">Telegram</div>
+</div>
+
+<div class="glass glass-hover rounded-2xl p-4 text-center">
+<div class="text-2xl">▶️</div>
+<div class="mt-2 text-xs text-zinc-400">YouTube</div>
+</div>
+
+<div class="glass glass-hover rounded-2xl p-4 text-center">
+<div class="text-2xl">🎵</div>
+<div class="mt-2 text-xs text-zinc-400">TikTok</div>
+</div>
+
+<div class="glass glass-hover rounded-2xl p-4 text-center">
+<div class="text-2xl">🔗</div>
+<div class="mt-2 text-xs text-zinc-400">Custom URL</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="mb-20 grid gap-4 sm:grid-cols-3">
+
+<div class="glass rounded-2xl p-5">
+
+<div class="text-xs text-zinc-600">
+CONTENT
+</div>
+
+<div class="mt-2 text-xl font-black">
+URL · Text · File
+</div>
+
+</div>
+
+<div class="glass rounded-2xl p-5">
+
+<div class="text-xs text-zinc-600">
+REQUIREMENTS
+</div>
+
+<div class="mt-2 text-xl font-black">
+Up to 20
+</div>
+
+</div>
+
+<div class="glass rounded-2xl p-5">
+
+<div class="text-xs text-zinc-600">
+GATE
+</div>
+
+<div class="mt-2 text-xl font-black">
+30 Seconds
+</div>
+
+</div>
+
+</section>
+
+<section class="mb-20 rounded-[30px] border border-cyan-400/[.08] bg-cyan-400/[.025] p-7 text-center sm:p-10">
+
+<div class="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-400/[.07]">
+✦
+</div>
+
+<h2 class="mt-5 text-2xl font-black sm:text-3xl">
+Ready to create your unlock link?
+</h2>
+
+<p class="mx-auto mt-3 max-w-xl text-sm leading-6 text-zinc-500">
+Atur konten, pilih requirement, lalu generate link kamu.
+</p>
+
+<a
+href="/create"
+class="mt-6 inline-flex rounded-2xl bg-white px-6 py-3.5 font-bold text-black transition hover:bg-zinc-200"
+>
+Create Unlock Link
+</a>
+
+</section>
+
+<footer class="border-t border-white/[.07] py-7">
+
+<div class="flex flex-col items-center justify-between gap-3 text-xs text-zinc-700 sm:flex-row">
+
+<div>
+ReyCode Unlock
+</div>
+
+<div>
+Build. Code. Create.
+</div>
+
+</div>
+
+</footer>
+
+</main>
+
+</div>
+
+<script>
+function updateGreeting() {
+const hour = new Date().getHours();
+
+let greeting;
+
+if (hour >= 5 && hour < 11) {
+greeting = 'Selamat pagi, Dev';
+} else if (hour >= 11 && hour < 15) {
+greeting = 'Selamat siang, Dev';
+} else if (hour >= 15 && hour < 18) {
+greeting = 'Selamat sore, Dev';
+} else {
+greeting = 'Selamat malam, Dev';
+}
+
+document.getElementById('greeting').textContent = greeting;
+}
+
+updateGreeting();
+
+setInterval(updateGreeting, 60000);
+</script>
+
+</body>
+</html>
