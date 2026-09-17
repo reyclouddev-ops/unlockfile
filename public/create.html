@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050505">
+    <title>ReyCode Unlock — Create Link</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'float-slow': 'floatSlow 7s ease-in-out infinite',
+                        'float-reverse': 'floatReverse 9s ease-in-out infinite',
+                        'fade-up': 'fadeUp .45s ease both',
+                        'scale-in': 'scaleIn .25s ease both',
+                        'shine': 'shine 2.5s linear infinite',
+                        'spin-slow': 'spin 12s linear infinite'
+                    },
+                    keyframes: {
+                        floatSlow: {
+                            '0%, 100%': {
+                                transform: 'translate3d(0, 0, 0)'
+                            },
+                            '50%': {
+                                transform: 'translate3d(0, -18px, 0)'
+                            }
+                        },
+                        floatReverse: {
+                            '0%, 100%': {
+                                transform: 'translate3d(0, 0, 0)'
+                            },
+                            '50%': {
+                                transform: 'translate3d(12px, 14px, 0)'
+                            }
+                        },
+                        fadeUp: {
+                            from: {
+                                opacity: '0',
+                                transform: 'translateY(12px)'
+                            },
+                            to: {
+                                opacity: '1',
+                                transform: 'translateY(0)'
+                            }
+                        },
+                        scaleIn: {
+                            from: {
+                                opacity: '0',
+                                transform: 'scale(.97)'
+                            },
+                            to: {
+                                opacity: '1',
+                                transform: 'scale(1)'
+                            }
+                        },
+                        shine: {
+                            from: {
+                                backgroundPosition: '-200% 0'
+                            },
+                            to: {
+                                backgroundPosition: '200% 0'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 10% 0%, rgba(59, 130, 246, .12), transparent 28%),
+                radial-gradient(circle at 90% 15%, rgba(14, 165, 233, .08), transparent 28%),
+                radial-gradient(circle at 50% 100%, rgba(37, 99, 235, .06), transparent 30%),
+                #050505;
+            color: #f8fafc;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .28;
+            background-image:
+                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to bottom, black, transparent 90%);
+            -webkit-mask-image: linear-gradient(to bottom, black, transparent 90%);
+        }
+
+        ::selection {
+            background: rgba(59, 130, 246, .35);
+        }
+
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #252525;
+            border-radius: 999px;
+        }
+
+        .glass {
+            background: rgba(12, 12, 15, .72);
+            border: 1px solid rgba(255,255,255,.065);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow:
+                0 20px 70px rgba(0,0,0,.25),
+                inset 0 1px 0 rgba(255,255,255,.025);
+        }
+
+        .glass-soft {
+            background: rgba(255,255,255,.025);
+            border: 1px solid rgba(255,255,255,.06);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .input {
+            width: 100%;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,.075);
+            background: rgba(255,255,255,.035);
+            color: #f8fafc;
+            outline: none;
+            padding: 14px 15px;
+            transition: .2s ease;
+        }
+
+        .input:hover {
+            border-color: rgba(255,255,255,.12);
+        }
+
+        .input:focus {
+            border-color: rgba(59,130,246,.65);
+            background: rgba(59,130,246,.035);
+            box-shadow: 0 0 0 4px rgba(59,130,246,.075);
+        }
+
+        .input::placeholder {
+            color: #52525b;
+        }
+
+        textarea.input {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        .content-tab {
+            transition: .2s ease;
+        }
+
+        .content-tab.active {
+            color: white;
+            background: rgba(59,130,246,.11);
+            border-color: rgba(59,130,246,.4);
+            box-shadow: 0 0 25px rgba(59,130,246,.06);
+        }
+
+        .platform-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 19px;
+            border: 1px solid rgba(255,255,255,.065);
+            background:
+                linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+            padding: 15px;
+            cursor: pointer;
+            transition: .22s ease;
+        }
+
+        .platform-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                120deg,
+                transparent 20%,
+                rgba(255,255,255,.05) 45%,
+                transparent 70%
+            );
+            transform: translateX(-120%);
+            transition: .55s ease;
+        }
+
+        .platform-card:hover::after {
+            transform: translateX(120%);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,.13);
+            background:
+                linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
+        }
+
+        .platform-card.active {
+            border-color: rgba(59,130,246,.58);
+            background:
+                linear-gradient(145deg, rgba(59,130,246,.13), rgba(59,130,246,.035));
+            box-shadow:
+                0 0 0 1px rgba(59,130,246,.08),
+                0 15px 45px rgba(37,99,235,.08);
+        }
+
+        .platform-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            font-size: 20px;
+            flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,.045);
+        }
+
+        .step {
+            position: relative;
+        }
+
+        .step::after {
+            content: "";
+            position: absolute;
+            top: 17px;
+            left: calc(100% + 8px);
+            width: 24px;
+            height: 1px;
+            background: rgba(255,255,255,.08);
+        }
+
+        .step:last-child::after {
+            display: none;
+        }
+
+        .step-dot {
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 11px;
+            font-size: 11px;
+            font-weight: 800;
+            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.035);
+            color: #71717a;
+        }
+
+        .step.active .step-dot {
+            color: #fff;
+            border-color: rgba(59,130,246,.45);
+            background: rgba(59,130,246,.12);
+            box-shadow: 0 0 22px rgba(59,130,246,.08);
+        }
+
+        .req-card {
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,.065);
+            background:
+                linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+            animation: fadeUp .35s ease both;
+        }
+
+        .req-number {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(255,255,255,.045);
+            color: #71717a;
+            font-size: 11px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .file-drop {
+            border: 1px dashed rgba(255,255,255,.12);
+            background: rgba(255,255,255,.025);
+            transition: .2s ease;
+        }
+
+        .file-drop:hover,
+        .file-drop.dragging {
+            border-color: rgba(59,130,246,.55);
+            background: rgba(59,130,246,.045);
+        }
+
+        .preview-card {
+            border: 1px solid rgba(255,255,255,.06);
+            background:
+                radial-gradient(circle at 100% 0%, rgba(59,130,246,.09), transparent 38%),
+                rgba(255,255,255,.025);
+        }
+
+        .shine {
+            background: linear-gradient(
+                110deg,
+                #fff 0%,
+                #cbd5e1 35%,
+                #fff 50%,
+                #cbd5e1 65%,
+                #fff 100%
+            );
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        .hidden-input {
+            display: none;
+        }
+
+        .toast {
+            opacity: 0;
+            transform: translate(-50%, 18px);
+            pointer-events: none;
+            transition: .25s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            border: 2px solid rgba(0,0,0,.18);
+            border-top-color: #000;
+            animation: spin .7s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .fade-up {
+            animation: fadeUp .4s ease both;
+        }
+
+        @media (max-width: 640px) {
+            .step::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute -top-32 -left-24 w-80 h-80 rounded-full bg-blue-600/10 blur-[100px] animate-float-slow"></div>
+        <div class="absolute top-1/3 -right-32 w-96 h-96 rounded-full bg-cyan-500/[.06] blur-[110px] animate-float-reverse"></div>
+        <div class="absolute bottom-0 left-1/3 w-80 h-80 rounded-full bg-blue-500/[.05] blur-[100px]"></div>
+    </div>
+
+    <header class="relative z-30 border-b border-white/[.055] bg-black/35 backdrop-blur-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[68px] flex items-center justify-between">
+
+            <a href="/" class="flex items-center gap-3 group">
+                <div class="relative">
+                    <div class="absolute inset-0 rounded-xl bg-blue-500/20 blur-lg group-hover:bg-blue-500/30 transition"></div>
+                    <div class="relative w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center font-black text-lg">
+                        R
+                    </div>
+                </div>
+
+                <div>
+                    <div class="font-black tracking-tight leading-none">
+                        ReyCode
+                    </div>
+                    <div class="text-[9px] tracking-[.28em] text-slate-600 mt-1">
+                        UNLOCK
+                    </div>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-2">
+                <div class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl glass-soft text-xs text-slate-500">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    Creator
+                </div>
+
+                <a
+                    href="/"
+                    class="px-3.5 py-2 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/[.04] transition"
+                >
+                    ← Back
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-7 sm:py-10">
+
+        <div class="max-w-6xl mx-auto">
+
+            <div class="text-center mb-8 sm:mb-10">
+
+                <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full border border-blue-500/10 bg-blue-500/[.045] text-xs text-blue-300 mb-5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                    Unlock Link Creator
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl font-black tracking-tight">
+                    Build your
+                    <span class="shine">Unlock Link</span>
+                </h1>
+
+                <p class="max-w-xl mx-auto text-sm sm:text-base text-slate-500 mt-4 leading-relaxed">
+                    Buat gateway link dengan requirement sosial yang tampil sebelum konten dibuka.
+                </p>
+
+            </div>
+
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="flex items-start justify-center gap-4 sm:gap-8">
+
+                    <div class="step active flex flex-col items-center gap-2">
+                        <div class="step-dot">01</div>
+                        <span class="text-[10px] sm:text-xs text-slate-300 font-medium">
+                            Content
+                        </span>
+                    </div>
+
+                    <div class="step flex flex-col items-center gap-2">
+                        <div class="step-dot">02</div>
+                        <span class="text-[10px] sm:text-xs text-slate-500 font-medium">
+                            Requirements
+                        </span>
+                    </div>
+
+                    <div class="step flex flex-col items-center gap-2">
+                        <div class="step-dot">03</div>
+                        <span class="text-[10px] sm:text-xs text-slate-500 font-medium">
+                            Generate
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-[minmax(0,1fr)_340px] gap-6 items-start">
+
+                <form id="createForm" class="space-y-5">
+
+                    <section class="glass rounded-[26px] p-5 sm:p-7">
+
+                        <div class="flex items-start justify-between gap-4 mb-7">
+
+                            <div class="flex items-start gap-3">
+                                <div class="step-dot text-blue-300">
+                                    01
+                                </div>
+
+                                <div>
+                                    <h2 class="font-bold text-lg">
+                                        Content
+                                    </h2>
+
+                                    <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                                        Tentukan apa yang akan dibuka setelah semua requirement selesai.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="hidden sm:flex px-2.5 py-1.5 rounded-lg bg-white/[.035] border border-white/[.05] text-[10px] text-slate-500">
+                                REQUIRED
+                            </div>
+
+                        </div>
+
+                        <div class="space-y-5">
+
+                            <div>
+                                <div class="flex items-center justify-between mb-2.5">
+                                    <label class="text-sm font-semibold">
+                                        Judul Link
+                                    </label>
+
+                                    <span id="titleCount" class="text-[11px] text-slate-600">
+                                        0/200
+                                    </span>
+                                </div>
+
+                                <input
+                                    id="title"
+                                    name="title"
+                                    class="input"
+                                    maxlength="200"
+                                    autocomplete="off"
+                                    placeholder="Contoh: Download Premium File"
+                                >
+                            </div>
+
+                            <div>
+                                <label class="text-sm font-semibold block mb-2.5">
+                                    Content Type
+                                </label>
+
+                                <div class="grid grid-cols-3 gap-2">
+
+                                    <button
+                                        type="button"
+                                        class="content-tab active flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-white/[.07] py-4 text-slate-400"
+                                        data-type="url"
+                                    >
+                                        <span class="text-lg">🔗</span>
+                                        <span class="text-xs font-semibold">URL</span>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="content-tab flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-white/[.07] py-4 text-slate-400"
+                                        data-type="text"
+                                    >
+                                        <span class="text-lg">📝</span>
+                                        <span class="text-xs font-semibold">Text</span>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="content-tab flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-white/[.07] py-4 text-slate-400"
+                                        data-type="file"
+                                    >
+                                        <span class="text-lg">📁</span>
+                                        <span class="text-xs font-semibold">File</span>
+                                    </button>
+
+                                </div>
+                            </div>
+
+                            <div id="urlContent" class="fade-up">
+
+                                <label class="text-sm font-semibold block mb-2.5">
+                                    Destination URL
+                                </label>
+
+                                <div class="relative">
+                                    <input
+                                        id="destination"
+                                        name="destination"
+                                        type="url"
+                                        class="input pr-12"
+                                        placeholder="https://example.com/download"
+                                    >
+
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-600">
+                                        ↗
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="textContent" class="hidden fade-up">
+
+                                <div class="flex items-center justify-between mb-2.5">
+                                    <label class="text-sm font-semibold">
+                                        Text Content
+                                    </label>
+
+                                    <span id="textCount" class="text-[11px] text-slate-600">
+                                        0/500000
+                                    </span>
+                                </div>
+
+                                <textarea
+                                    id="textValue"
+                                    class="input"
+                                    maxlength="500000"
+                                    placeholder="Tulis konten yang akan ditampilkan setelah unlock..."
+                                ></textarea>
+
+                            </div>
+
+                            <div id="fileContent" class="hidden fade-up">
+
+                                <label class="text-sm font-semibold block mb-2.5">
+                                    Upload File
+                                </label>
+
+                                <label
+                                    id="fileDrop"
+                                    for="file"
+                                    class="file-drop rounded-2xl p-7 sm:p-10 flex flex-col items-center justify-center text-center cursor-pointer"
+                                >
+
+                                    <div class="w-16 h-16 rounded-2xl bg-blue-500/[.07] border border-blue-500/10 flex items-center justify-center text-2xl mb-4">
+                                        📁
+                                    </div>
+
+                                    <div class="font-bold text-sm">
+                                        Upload file
+                                    </div>
+
+                                    <div class="text-xs text-slate-600 mt-1.5">
+                                        ZIP, APK, PDF, TXT, dan file lainnya
+                                    </div>
+
+                                    <div class="mt-4 px-3 py-1.5 rounded-lg bg-white/[.035] text-[10px] text-slate-500">
+                                        MAX 50 MB
+                                    </div>
+
+                                    <div
+                                        id="filePreview"
+                                        class="hidden mt-4 px-4 py-2.5 rounded-xl bg-blue-500/[.08] border border-blue-500/10 text-xs text-blue-300"
+                                    ></div>
+
+                                </label>
+
+                                <input
+                                    id="file"
+                                    name="file"
+                                    type="file"
+                                    class="hidden-input"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <section class="glass rounded-[26px] p-5 sm:p-7">
+
+                        <div class="flex items-start justify-between gap-4 mb-6">
+
+                            <div class="flex items-start gap-3">
+
+                                <div class="step-dot text-blue-300">
+                                    02
+                                </div>
+
+                                <div>
+                                    <h2 class="font-bold text-lg">
+                                        Requirements
+                                    </h2>
+
+                                    <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                                        Pilih platform lalu tambahkan link requirement.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <div
+                                id="requirementCount"
+                                class="px-2.5 py-1.5 rounded-lg bg-white/[.035] border border-white/[.05] text-[10px] font-bold text-slate-500"
+                            >
+                                0 / 20
+                            </div>
+
+                        </div>
+
+                        <div class="mb-5 rounded-2xl border border-blue-500/10 bg-blue-500/[.035] p-4">
+
+                            <div class="flex gap-3">
+
+                                <div class="w-9 h-9 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0">
+                                    ✦
+                                </div>
+
+                                <div>
+                                    <div class="text-sm font-semibold">
+                                        Social Requirements
+                                    </div>
+
+                                    <div class="text-xs text-slate-500 mt-1 leading-relaxed">
+                                        Tambahkan link WhatsApp, Instagram, Telegram, YouTube,
+                                        TikTok, atau URL custom.
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+
+                            <button type="button" class="platform-card" data-platform="whatsapp">
+                                <div class="flex items-center gap-3">
+                                    <div class="platform-icon bg-emerald-500/[.08]">
+                                        💬
+                                    </div>
+                                    <div class="text-left min-w-0">
+                                        <div class="font-bold text-sm">
+                                            WhatsApp
+                                        </div>
+                                        <div class="text-[10px] text-slate-600 truncate">
+                                            Group · Channel · Number
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" class="platform-card" data-platform="instagram">
+                                <div class="flex items-center gap-3">
+                                    <div class="platform-icon bg-pink-500/[.08]">
+                                        📸
+                                    </div>
+                                    <div class="text-left min-w-0">
+                                        <div class="font-bold text-sm">
+                                            Instagram
+                                        </div>
+                                        <div class="text-[10px] text-slate-600 truncate">
+                                            Profile · Post
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" class="platform-card" data-platform="telegram">
+                                <div class="flex items-center gap-3">
+                                    <div class="platform-icon bg-sky-500/[.08]">
+                                        ✈️
+                                    </div>
+                                    <div class="text-left min-w-0">
+                                        <div class="font-bold text-sm">
+                                            Telegram
+                                        </div>
+                                        <div class="text-[10px] text-slate-600 truncate">
+                                            Group · Channel
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" class="platform-card" data-platform="youtube">
+                                <div class="flex items-center gap-3">
+                                    <div class="platform-icon bg-red-500/[.08]">
+                                        ▶️
+                                    </div>
+                                    <div class="text-left min-w-0">
+                                        <div class="font-bold text-sm">
+                                            YouTube
+                                        </div>
+                                        <div class="text-[10px] text-slate-600 truncate">
+                                            Channel · Video
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" class="platform-card" data-platform="tiktok">
+                                <div class="flex items-center gap-3">
+                                    <div class="platform-icon bg-white/[.055]">
+                                        🎵
+                                    </div>
+                                    <div class="text-left min-w-0">
+                                        <div class="font-bold text-sm">
+                                            TikTok
+                                        </div>
+                                        <div class="text-[10px] text-slate-600 truncate">
+                                            Profile · Video
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" class="platform-card" data-platform="custom">
+                                <div class="flex items-center gap-3">
+                                    <div class="platform-icon bg-blue-500/[.08]">
+                                        🔗
+                                    </div>
+                                    <div class="text-left min-w-0">
+                                        <div class="font-bold text-sm">
+                                            Custom
+                                        </div>
+                                        <div class="text-[10px] text-slate-600 truncate">
+                                            Any HTTPS URL
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="whatsappHelper"
+                            class="hidden mt-5 rounded-2xl border border-emerald-500/10 bg-emerald-500/[.025] p-4"
+                        >
+
+                            <div class="flex items-center gap-2 mb-3">
+                                <span>💬</span>
+                                <span class="text-sm font-bold">
+                                    WhatsApp Type
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2">
+
+                                <button
+                                    type="button"
+                                    class="wa-type"
+                                    data-wa-type="group"
+                                >
+                                    Group
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="wa-type"
+                                    data-wa-type="channel"
+                                >
+                                    Channel
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="wa-type"
+                                    data-wa-type="number"
+                                >
+                                    Number
+                                </button>
+
+                            </div>
+
+                            <input
+                                id="whatsappNumber"
+                                class="input hidden mt-3"
+                                inputmode="numeric"
+                                placeholder="6281234567890"
+                            >
+
+                        </div>
+
+                        <div
+                            id="requirementBuilder"
+                            class="hidden mt-5 req-card p-4 sm:p-5"
+                        >
+
+                            <div class="flex items-start justify-between gap-3 mb-5">
+
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        id="builderIcon"
+                                        class="platform-icon bg-blue-500/[.08]"
+                                    >
+                                        🔗
+                                    </div>
+
+                                    <div>
+                                        <div
+                                            id="selectedPlatformName"
+                                            class="font-bold text-sm"
+                                        >
+                                            Requirement
+                                        </div>
+
+                                        <div
+                                            id="selectedPlatformDescription"
+                                            class="text-xs text-slate-600 mt-1"
+                                        >
+                                            Masukkan link requirement.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    id="cancelRequirement"
+                                    class="w-9 h-9 rounded-xl bg-white/[.035] hover:bg-red-500/10 hover:text-red-400 text-slate-500 transition"
+                                >
+                                    ×
+                                </button>
+
+                            </div>
+
+                            <div>
+
+                                <label class="text-xs font-semibold text-slate-400 block mb-2">
+                                    Label
+                                </label>
+
+                                <input
+                                    id="requirementLabel"
+                                    class="input"
+                                    maxlength="100"
+                                    placeholder="Contoh: Join WhatsApp Group"
+                                >
+
+                            </div>
+
+                            <div class="mt-4">
+
+                                <label
+                                    id="requirementUrlLabel"
+                                    class="text-xs font-semibold text-slate-400 block mb-2"
+                                >
+                                    Link
+                                </label>
+
+                                <input
+                                    id="requirementUrl"
+                                    class="input"
+                                    type="url"
+                                    placeholder="https://..."
+                                >
+
+                                <p
+                                    id="requirementHint"
+                                    class="text-[10px] text-slate-600 mt-2"
+                                ></p>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                id="addRequirement"
+                                class="mt-4 w-full py-3.5 rounded-xl bg-white text-black hover:bg-slate-200 active:scale-[.99] transition font-black text-sm"
+                            >
+                                + Add Requirement
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="requirementsList"
+                            class="space-y-3 mt-5"
+                        ></div>
+
+                        <div
+                            id="emptyRequirements"
+                            class="mt-5 rounded-2xl border border-dashed border-white/[.08] py-9 text-center"
+                        >
+
+                            <div class="w-12 h-12 mx-auto rounded-2xl bg-white/[.035] flex items-center justify-center text-xl mb-3">
+                                ⊕
+                            </div>
+
+                            <div class="text-sm font-semibold text-slate-400">
+                                No requirements yet
+                            </div>
+
+                            <div class="text-xs text-slate-600 mt-1.5">
+                                Pilih salah satu platform di atas.
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <section class="glass rounded-[26px] p-5 sm:p-7">
+
+                        <div class="flex items-start gap-3">
+
+                            <div class="step-dot text-blue-300">
+                                03
+                            </div>
+
+                            <div>
+                                <h2 class="font-bold text-lg">
+                                    Generate
+                                </h2>
+
+                                <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                                    Buat link unlock setelah semua data siap.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="mt-6 grid sm:grid-cols-2 gap-3">
+
+                            <div class="glass-soft rounded-2xl p-4">
+                                <div class="text-lg mb-2">⏱️</div>
+                                <div class="text-sm font-bold">
+                                    30 Second Gate
+                                </div>
+                                <div class="text-[11px] text-slate-600 mt-1 leading-relaxed">
+                                    Requirement menggunakan proses timer pada halaman unlock.
+                                </div>
+                            </div>
+
+                            <div class="glass-soft rounded-2xl p-4">
+                                <div class="text-lg mb-2">🛡️</div>
+                                <div class="text-sm font-bold">
+                                    Secure Gateway
+                                </div>
+                                <div class="text-[11px] text-slate-600 mt-1 leading-relaxed">
+                                    Konten tetap berada di balik halaman unlock.
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button
+                            id="submitButton"
+                            type="submit"
+                            class="mt-5 w-full py-4 rounded-2xl bg-white text-black hover:bg-slate-200 active:scale-[.99] transition font-black"
+                        >
+
+                            <span id="submitText" class="flex items-center justify-center gap-2">
+                                Generate Unlock Link
+                                <span>→</span>
+                            </span>
+
+                            <span
+                                id="submitLoading"
+                                class="hidden items-center justify-center gap-2"
+                            >
+                                <span class="spinner"></span>
+                                Generating...
+                            </span>
+
+                        </button>
+
+                    </section>
+
+                </form>
+
+                <aside class="lg:sticky lg:top-6 space-y-5">
+
+                    <div class="glass rounded-[26px] p-5">
+
+                        <div class="flex items-center justify-between mb-5">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-[.2em] text-slate-600">
+                                    Live Preview
+                                </div>
+
+                                <div class="font-bold mt-1">
+                                    Unlock Page
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-emerald-500/[.06] border border-emerald-500/10">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                <span class="text-[9px] text-emerald-400">
+                                    LIVE
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="preview-card rounded-2xl p-4">
+
+                            <div class="flex items-center gap-3 pb-4 border-b border-white/[.05]">
+
+                                <div class="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center font-black">
+                                    R
+                                </div>
+
+                                <div class="min-w-0">
+                                    <div class="text-sm font-bold truncate" id="previewTitle">
+                                        ReyCode Unlock
+                                    </div>
+
+                                    <div class="text-[10px] text-slate-600 mt-0.5">
+                                        Protected content
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="py-5">
+
+                                <div class="w-12 h-12 rounded-2xl bg-blue-500/[.07] flex items-center justify-center text-xl mx-auto mb-3">
+                                    🔒
+                                </div>
+
+                                <div class="text-center text-sm font-bold">
+                                    Complete Requirements
+                                </div>
+
+                                <div class="text-center text-[10px] text-slate-600 mt-1">
+                                    Unlock content after completion
+                                </div>
+
+                            </div>
+
+                            <div
+                                id="previewRequirements"
+                                class="space-y-2"
+                            >
+
+                                <div class="rounded-xl bg-white/[.025] border border-white/[.05] p-3 flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-white/[.04] flex items-center justify-center">
+                                        🔗
+                                    </div>
+
+                                    <div class="flex-1">
+                                        <div class="h-2 w-24 rounded bg-white/[.06]"></div>
+                                        <div class="h-1.5 w-16 rounded bg-white/[.035] mt-2"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="mt-3 h-10 rounded-xl bg-white/[.035] flex items-center justify-center text-[10px] text-slate-700 font-bold">
+                                LOCKED
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="glass rounded-[26px] p-5">
+
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-9 h-9 rounded-xl bg-blue-500/[.08] flex items-center justify-center">
+                                ✦
+                            </div>
+
+                            <div>
+                                <div class="text-sm font-bold">
+                                    How it works
+                                </div>
+
+                                <div class="text-[10px] text-slate-600">
+                                    Simple 3-step flow
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+
+                            <div class="flex gap-3">
+                                <div class="req-number">01</div>
+
+                                <div>
+                                    <div class="text-xs font-semibold">
+                                        Create
+                                    </div>
+
+                                    <div class="text-[10px] text-slate-600 mt-1">
+                                        Atur konten dan requirement.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <div class="req-number">02</div>
+
+                                <div>
+                                    <div class="text-xs font-semibold">
+                                        Share
+                                    </div>
+
+                                    <div class="text-[10px] text-slate-600 mt-1">
+                                        Bagikan URL unlock kamu.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <div class="req-number">03</div>
+
+                                <div>
+                                    <div class="text-xs font-semibold">
+                                        Unlock
+                                    </div>
+
+                                    <div class="text-[10px] text-slate-600 mt-1">
+                                        Pengunjung menyelesaikan gate.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+            <section
+                id="resultSection"
+                class="hidden mt-6 glass rounded-[26px] p-5 sm:p-7 fade-up"
+            >
+
+                <div class="flex items-start gap-4">
+
+                    <div class="w-11 h-11 rounded-2xl bg-emerald-500/10 border border-emerald-500/10 flex items-center justify-center text-emerald-400">
+                        ✓
+                    </div>
+
+                    <div>
+                        <div class="text-[10px] uppercase tracking-[.2em] text-emerald-500/70">
+                            Success
+                        </div>
+
+                        <h2 class="font-black text-xl mt-1">
+                            Unlock Link Created
+                        </h2>
+
+                        <p class="text-xs text-slate-500 mt-1">
+                            Link kamu sudah siap dibagikan.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="mt-5 rounded-2xl bg-black/25 border border-white/[.06] p-4">
+
+                    <div class="text-[10px] uppercase tracking-[.18em] text-slate-600 mb-2">
+                        Unlock URL
+                    </div>
+
+                    <div
+                        id="resultUrl"
+                        class="text-sm font-semibold text-blue-400 break-all"
+                    ></div>
+
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mt-4">
+
+                    <button
+                        type="button"
+                        id="copyButton"
+                        class="py-3.5 rounded-xl bg-white text-black hover:bg-slate-200 transition font-black text-sm"
+                    >
+                        Copy Link
+                    </button>
+
+                    <a
+                        id="openButton"
+                        href="#"
+                        target="_blank"
+                        rel="noopener"
+                        class="py-3.5 rounded-xl bg-white/[.04] border border-white/[.07] hover:bg-white/[.07] transition font-black text-sm flex items-center justify-center"
+                    >
+                        Open Link →
+                    </a>
+
+                </div>
+
+            </section>
+
+            <footer class="text-center py-9 text-[10px] tracking-wide text-slate-700">
+                ReyCode Unlock · Build. Code. Create.
+            </footer>
+
+        </div>
+
+    </main>
+
+    <div
+        id="toast"
+        class="toast fixed z-50 bottom-5 left-1/2 px-4 py-3 rounded-xl glass text-sm shadow-2xl"
+    ></div>
+
+    <script>
+        const form = document.getElementById('createForm');
+
+        const titleInput = document.getElementById('title');
+        const destinationInput = document.getElementById('destination');
+        const textValue = document.getElementById('textValue');
+        const fileInput = document.getElementById('file');
+
+        const titleCount = document.getElementById('titleCount');
+        const textCount = document.getElementById('textCount');
+
+        const urlContent = document.getElementById('urlContent');
+        const textContent = document.getElementById('textContent');
+        const fileContent = document.getElementById('fileContent');
+
+        const fileDrop = document.getElementById('fileDrop');
+        const filePreview = document.getElementById('filePreview');
+
+        const platformCards = document.querySelectorAll('.platform-card');
+
+        const whatsappHelper = document.getElementById('whatsappHelper');
+        const whatsappNumber = document.getElementById('whatsappNumber');
+        const waTypes = document.querySelectorAll('.wa-type');
+
+        const requirementBuilder = document.getElementById('requirementBuilder');
+        const selectedPlatformName = document.getElementById('selectedPlatformName');
+        const selectedPlatformDescription = document.getElementById('selectedPlatformDescription');
+        const requirementLabel = document.getElementById('requirementLabel');
+        const requirementUrl = document.getElementById('requirementUrl');
+        const requirementHint = document.getElementById('requirementHint');
+        const requirementUrlLabel = document.getElementById('requirementUrlLabel');
+        const builderIcon = document.getElementById('builderIcon');
+
+        const requirementsList = document.getElementById('requirementsList');
+        const emptyRequirements = document.getElementById('emptyRequirements');
+        const requirementCount = document.getElementById('requirementCount');
+
+        const previewTitle = document.getElementById('previewTitle');
+        const previewRequirements = document.getElementById('previewRequirements');
+
+        const resultSection = document.getElementById('resultSection');
+        const resultUrl = document.getElementById('resultUrl');
+        const copyButton = document.getElementById('copyButton');
+        const openButton = document.getElementById('openButton');
+
+        const submitButton = document.getElementById('submitButton');
+        const submitText = document.getElementById('submitText');
+        const submitLoading = document.getElementById('submitLoading');
+
+        const toast = document.getElementById('toast');
+
+        let contentType = 'url';
+        let selectedPlatform = null;
+        let whatsappType = 'group';
+        let requirements = [];
+
+        const platformData = {
+            whatsapp: {
+                name: 'WhatsApp',
+                description: 'Group, Channel, atau nomor WhatsApp.',
+                label: 'Join WhatsApp Group',
+                placeholder: 'https://chat.whatsapp.com/...',
+                hint: 'Gunakan link Group, Channel, atau nomor WhatsApp.'
+            },
+            instagram: {
+                name: 'Instagram',
+                description: 'Profile atau post Instagram.',
+                label: 'Follow Instagram',
+                placeholder: 'https://instagram.com/username',
+                hint: 'Contoh: https://instagram.com/username'
+            },
+            telegram: {
+                name: 'Telegram',
+                description: 'Group, channel, atau profile Telegram.',
+                label: 'Join Telegram',
+                placeholder: 'https://t.me/username',
+                hint: 'Contoh: https://t.me/username'
+            },
+            youtube: {
+                name: 'YouTube',
+                description: 'Channel atau video YouTube.',
+                label: 'Subscribe YouTube',
+                placeholder: 'https://youtube.com/@username',
+                hint: 'Contoh: https://youtube.com/@username'
+            },
+            tiktok: {
+                name: 'TikTok',
+                description: 'Profile atau video TikTok.',
+                label: 'Follow TikTok',
+                placeholder: 'https://tiktok.com/@username',
+                hint: 'Contoh: https://tiktok.com/@username'
+            },
+            custom: {
+                name: 'Custom URL',
+                description: 'Gunakan URL HTTPS lainnya.',
+                label: 'Open Link',
+                placeholder: 'https://example.com',
+                hint: 'Gunakan URL HTTP/HTTPS yang valid.'
+            }
+        };
+
+        const platformIcons = {
+            whatsapp: '💬',
+            instagram: '📸',
+            telegram: '✈️',
+            youtube: '▶️',
+            tiktok: '🎵',
+            custom: '🔗'
+        };
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            clearTimeout(window.toastTimer);
+
+            window.toastTimer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function updateContentTabs() {
+            document.querySelectorAll('.content-tab').forEach(button => {
+                const active = button.dataset.type === contentType;
+
+                button.classList.toggle('active', active);
+            });
+        }
+
+        document.querySelectorAll('.content-tab').forEach(button => {
+            button.addEventListener('click', () => {
+                contentType = button.dataset.type;
+
+                urlContent.classList.toggle(
+                    'hidden',
+                    contentType !== 'url'
+                );
+
+                textContent.classList.toggle(
+                    'hidden',
+                    contentType !== 'text'
+                );
+
+                fileContent.classList.toggle(
+                    'hidden',
+                    contentType !== 'file'
+                );
+
+                updateContentTabs();
+            });
+        });
+
+        titleInput.addEventListener('input', () => {
+            titleCount.textContent = `${titleInput.value.length}/200`;
+
+            previewTitle.textContent =
+                titleInput.value.trim() ||
+                'ReyCode Unlock';
+        });
+
+        textValue.addEventListener('input', () => {
+            textCount.textContent =
+                `${textValue.value.length}/500000`;
+        });
+
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+
+            if (!file) {
+                filePreview.classList.add('hidden');
+                return;
+            }
+
+            if (file.size > 50 * 1024 * 1024) {
+                fileInput.value = '';
+                filePreview.classList.add('hidden');
+                showToast('Ukuran file maksimal 50 MB.');
+                return;
+            }
+
+            filePreview.textContent =
+                `${file.name} · ${formatBytes(file.size)}`;
+
+            filePreview.classList.remove('hidden');
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            fileDrop.addEventListener(eventName, event => {
+                event.preventDefault();
+                fileDrop.classList.add('dragging');
+            });
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            fileDrop.addEventListener(eventName, event => {
+                event.preventDefault();
+                fileDrop.classList.remove('dragging');
+            });
+        });
+
+        fileDrop.addEventListener('drop', event => {
+            const file = event.dataTransfer.files[0];
+
+            if (!file) {
+                return;
+            }
+
+            if (file.size > 50 * 1024 * 1024) {
+                showToast('Ukuran file maksimal 50 MB.');
+                return;
+            }
+
+            const transfer = new DataTransfer();
+
+            transfer.items.add(file);
+
+            fileInput.files = transfer.files;
+
+            filePreview.textContent =
+                `${file.name} · ${formatBytes(file.size)}`;
+
+            filePreview.classList.remove('hidden');
+        });
+
+        platformCards.forEach(card => {
+            card.addEventListener('click', () => {
+                if (requirements.length >= 20) {
+                    showToast('Maksimal 20 requirement.');
+                    return;
+                }
+
+                selectedPlatform = card.dataset.platform;
+
+                platformCards.forEach(item => {
+                    item.classList.toggle(
+                        'active',
+                        item.dataset.platform === selectedPlatform
+                    );
+                });
+
+                const data = platformData[selectedPlatform];
+
+                selectedPlatformName.textContent = data.name;
+                selectedPlatformDescription.textContent =
+                    data.description;
+
+                requirementLabel.value = data.label;
+                requirementUrl.value = '';
+
+                requirementHint.textContent = data.hint;
+                requirementUrl.placeholder = data.placeholder;
+
+                builderIcon.textContent =
+                    platformIcons[selectedPlatform] || '🔗';
+
+                whatsappHelper.classList.toggle(
+                    'hidden',
+                    selectedPlatform !== 'whatsapp'
+                );
+
+                if (selectedPlatform === 'whatsapp') {
+                    updateWhatsAppFields();
+                } else {
+                    requirementUrl.classList.remove('hidden');
+                    whatsappNumber.classList.add('hidden');
+                    requirementUrlLabel.textContent = 'Link';
+                }
+
+                requirementBuilder.classList.remove('hidden');
+
+                requirementBuilder.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+
+                setTimeout(() => {
+                    requirementLabel.focus();
+                }, 180);
+            });
+        });
+
+        waTypes.forEach(button => {
+            button.addEventListener('click', () => {
+                whatsappType = button.dataset.waType;
+
+                updateWhatsAppFields();
+            });
+        });
+
+        function updateWhatsAppFields() {
+            waTypes.forEach(button => {
+                const active =
+                    button.dataset.waType === whatsappType;
+
+                if (active) {
+                    button.className =
+                        'wa-type px-3 py-2.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-xs font-semibold text-emerald-300 transition';
+                } else {
+                    button.className =
+                        'wa-type px-3 py-2.5 rounded-xl border border-white/[.06] bg-white/[.025] text-xs font-semibold text-slate-500 hover:text-white transition';
+                }
+            });
+
+            if (whatsappType === 'number') {
+                requirementUrl.classList.add('hidden');
+                whatsappNumber.classList.remove('hidden');
+
+                requirementUrlLabel.textContent =
+                    'WhatsApp Number';
+
+                requirementHint.textContent =
+                    'Masukkan nomor dengan kode negara, contoh 6281234567890.';
+
+                requirementLabel.value =
+                    'Open WhatsApp';
+            } else {
+                requirementUrl.classList.remove('hidden');
+                whatsappNumber.classList.add('hidden');
+
+                requirementUrlLabel.textContent =
+                    'WhatsApp Link';
+
+                if (whatsappType === 'group') {
+                    requirementUrl.placeholder =
+                        'https://chat.whatsapp.com/...';
+
+                    requirementLabel.value =
+                        'Join WhatsApp Group';
+
+                    requirementHint.textContent =
+                        'Masukkan link WhatsApp Group.';
+                }
+
+                if (whatsappType === 'channel') {
+                    requirementUrl.placeholder =
+                        'https://whatsapp.com/channel/...';
+
+                    requirementLabel.value =
+                        'Follow WhatsApp Channel';
+
+                    requirementHint.textContent =
+                        'Masukkan link WhatsApp Channel.';
+                }
+            }
+        }
+
+        document
+            .getElementById('cancelRequirement')
+            .addEventListener('click', resetBuilder);
+
+        function resetBuilder() {
+            selectedPlatform = null;
+
+            requirementBuilder.classList.add('hidden');
+            whatsappHelper.classList.add('hidden');
+
+            platformCards.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            requirementLabel.value = '';
+            requirementUrl.value = '';
+            whatsappNumber.value = '';
+        }
+
+        document
+            .getElementById('addRequirement')
+            .addEventListener('click', () => {
+
+                if (!selectedPlatform) {
+                    showToast('Pilih platform terlebih dahulu.');
+                    return;
+                }
+
+                if (requirements.length >= 20) {
+                    showToast('Maksimal 20 requirement.');
+                    return;
+                }
+
+                const label =
+                    requirementLabel.value.trim();
+
+                let url =
+                    requirementUrl.value.trim();
+
+                if (
+                    selectedPlatform === 'whatsapp' &&
+                    whatsappType === 'number'
+                ) {
+                    const number =
+                        whatsappNumber.value
+                            .replace(/\D/g, '')
+                            .replace(/^0/, '62');
+
+                    if (!number || number.length < 8) {
+                        showToast('Nomor WhatsApp tidak valid.');
+                        whatsappNumber.focus();
+                        return;
+                    }
+
+                    url =
+                        `https://wa.me/${number}`;
+                }
+
+                if (!label) {
+                    showToast('Masukkan label requirement.');
+                    requirementLabel.focus();
+                    return;
+                }
+
+                if (!url) {
+                    showToast('Masukkan link requirement.');
+
+                    if (
+                        selectedPlatform === 'whatsapp' &&
+                        whatsappType === 'number'
+                    ) {
+                        whatsappNumber.focus();
+                    } else {
+                        requirementUrl.focus();
+                    }
+
+                    return;
+                }
+
+                if (!isValidHttpUrl(url)) {
+                    showToast(
+                        'Link harus menggunakan URL HTTP/HTTPS yang valid.'
+                    );
+
+                    return;
+                }
+
+                const detected =
+                    detectPlatform(url);
+
+                requirements.push({
+                    platform:
+                        detected ||
+                        selectedPlatform,
+                    label,
+                    url
+                });
+
+                renderRequirements();
+                resetBuilder();
+
+                showToast('Requirement berhasil ditambahkan.');
+            });
+
+        function renderRequirements() {
+            requirementsList.innerHTML = '';
+
+            requirementCount.textContent =
+                `${requirements.length} / 20`;
+
+            emptyRequirements.classList.toggle(
+                'hidden',
+                requirements.length > 0
+            );
+
+            requirements.forEach((item, index) => {
+                const wrapper =
+                    document.createElement('div');
+
+                wrapper.className =
+                    'req-card p-4';
+
+                wrapper.innerHTML = `
+                    <div class="flex items-start gap-3">
+                        <div class="req-number">
+                            ${String(index + 1).padStart(2, '0')}
+                        </div>
+
+                        <div class="w-10 h-10 rounded-xl bg-white/[.04] border border-white/[.04] flex items-center justify-center shrink-0">
+                            ${platformIcons[item.platform] || '🔗'}
+                        </div>
+
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-start justify-between gap-3">
+                                <div class="min-w-0">
+                                    <div class="font-bold text-sm truncate">
+                                        ${escapeHtml(item.label)}
+                                    </div>
+
+                                    <div class="text-[10px] text-slate-600 mt-1">
+                                        ${escapeHtml(getPlatformName(item.platform))}
+                                    </div>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    data-remove="${index}"
+                                    class="w-8 h-8 rounded-lg bg-white/[.035] hover:bg-red-500/10 hover:text-red-400 text-slate-600 transition shrink-0"
+                                >
+                                    ×
+                                </button>
+                            </div>
+
+                            <div class="mt-3 rounded-xl bg-black/20 border border-white/[.045] px-3 py-2.5">
+                                <div class="text-[10px] text-slate-600 break-all leading-relaxed">
+                                    ${escapeHtml(item.url)}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                requirementsList.appendChild(wrapper);
+            });
+
+            requirementsList
+                .querySelectorAll('[data-remove]')
+                .forEach(button => {
+                    button.addEventListener('click', () => {
+                        const index =
+                            Number(button.dataset.remove);
+
+                        requirements.splice(index, 1);
+
+                        renderRequirements();
+
+                        showToast(
+                            'Requirement dihapus.'
+                        );
+                    });
+                });
+
+            renderPreview();
+        }
+
+        function renderPreview() {
+            if (!requirements.length) {
+                previewRequirements.innerHTML = `
+                    <div class="rounded-xl bg-white/[.025] border border-white/[.05] p-3 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-white/[.04] flex items-center justify-center">
+                            🔗
+                        </div>
+
+                        <div class="flex-1">
+                            <div class="h-2 w-24 rounded bg-white/[.06]"></div>
+                            <div class="h-1.5 w-16 rounded bg-white/[.035] mt-2"></div>
+                        </div>
+                    </div>
+                `;
+
+                return;
+            }
+
+            previewRequirements.innerHTML =
+                requirements
+                    .slice(0, 4)
+                    .map(item => `
+                        <div class="rounded-xl bg-white/[.025] border border-white/[.05] p-3 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-white/[.04] flex items-center justify-center text-sm">
+                                ${platformIcons[item.platform] || '🔗'}
+                            </div>
+
+                            <div class="flex-1 min-w-0">
+                                <div class="text-[10px] font-semibold truncate">
+                                    ${escapeHtml(item.label)}
+                                </div>
+
+                                <div class="text-[9px] text-slate-700 mt-1">
+                                    ${escapeHtml(getPlatformName(item.platform))}
+                                </div>
+                            </div>
+
+                            <div class="text-[9px] text-slate-700">
+                                →
+                            </div>
+                        </div>
+                    `)
+                    .join('');
+
+            if (requirements.length > 4) {
+                previewRequirements.innerHTML += `
+                    <div class="text-center text-[9px] text-slate-700 pt-1">
+                        +${requirements.length - 4} more requirements
+                    </div>
+                `;
+            }
+        }
+
+        function detectPlatform(url) {
+            try {
+                const host =
+                    new URL(url)
+                        .hostname
+                        .toLowerCase()
+                        .replace(/^www\./, '');
+
+                if (
+                    host === 'wa.me' ||
+                    host === 'chat.whatsapp.com' ||
+                    host === 'whatsapp.com'
+                ) {
+                    return 'whatsapp';
+                }
+
+                if (host === 'instagram.com') {
+                    return 'instagram';
+                }
+
+                if (
+                    host === 't.me' ||
+                    host === 'telegram.me' ||
+                    host === 'telegram.dog'
+                ) {
+                    return 'telegram';
+                }
+
+                if (
+                    host === 'youtube.com' ||
+                    host === 'youtu.be'
+                ) {
+                    return 'youtube';
+                }
+
+                if (host === 'tiktok.com') {
+                    return 'tiktok';
+                }
+
+                return 'custom';
+
+            } catch {
+                return null;
+            }
+        }
+
+        function getPlatformName(platform) {
+            return platformData[platform]?.name ||
+                'Custom URL';
+        }
+
+        function isValidHttpUrl(value) {
+            try {
+                const url = new URL(value);
+
+                return (
+                    url.protocol === 'http:' ||
+                    url.protocol === 'https:'
+                );
+            } catch {
+                return false;
+            }
+        }
+
+        function formatBytes(bytes) {
+            if (!bytes) {
+                return '0 B';
+            }
+
+            const units = [
+                'B',
+                'KB',
+                'MB',
+                'GB'
+            ];
+
+            const index =
+                Math.floor(
+                    Math.log(bytes) /
+                    Math.log(1024)
+                );
+
+            return `${(
+                bytes /
+                Math.pow(1024, index)
+            ).toFixed(index === 0 ? 0 : 2)} ${units[index]}`;
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#039;');
+        }
+
+        form.addEventListener('submit', async event => {
+            event.preventDefault();
+
+            if (!requirements.length) {
+                showToast(
+                    'Tambahkan minimal 1 requirement.'
+                );
+
+                document
+                    .querySelector('.platform-card')
+                    ?.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+
+                return;
+            }
+
+            if (contentType === 'url') {
+                const destination =
+                    destinationInput.value.trim();
+
+                if (
+                    !destination ||
+                    !isValidHttpUrl(destination)
+                ) {
+                    showToast(
+                        'Masukkan URL tujuan yang valid.'
+                    );
+
+                    destinationInput.focus();
+
+                    return;
+                }
+            }
+
+            if (
+                contentType === 'text' &&
+                !textValue.value.trim()
+            ) {
+                showToast(
+                    'Masukkan konten text.'
+                );
+
+                textValue.focus();
+
+                return;
+            }
+
+            if (
+                contentType === 'file' &&
+                !fileInput.files[0]
+            ) {
+                showToast(
+                    'Pilih file terlebih dahulu.'
+                );
+
+                return;
+            }
+
+            if (
+                contentType === 'file' &&
+                fileInput.files[0].size >
+                50 * 1024 * 1024
+            ) {
+                showToast(
+                    'Ukuran file maksimal 50 MB.'
+                );
+
+                return;
+            }
+
+            setLoading(true);
+
+            try {
+                const data =
+                    new FormData();
+
+                data.append(
+                    'title',
+                    titleInput.value.trim() ||
+                    'ReyCode Unlock'
+                );
+
+                data.append(
+                    'contentType',
+                    contentType
+                );
+
+                data.append(
+                    'requirements',
+                    JSON.stringify(requirements)
+                );
+
+                if (contentType === 'url') {
+                    data.append(
+                        'destination',
+                        destinationInput.value.trim()
+                    );
+                }
+
+                if (contentType === 'text') {
+                    data.append(
+                        'textContent',
+                        textValue.value
+                    );
+                }
+
+                if (contentType === 'file') {
+                    data.append(
+                        'file',
+                        fileInput.files[0]
+                    );
+                }
+
+                const response =
+                    await fetch(
+                        '/api/index?action=create',
+                        {
+                            method: 'POST',
+                            body: data
+                        }
+                    );
+
+                const result =
+                    await response
+                        .json()
+                        .catch(() => null);
+
+                if (
+                    !response.ok ||
+                    !result?.success
+                ) {
+                    throw new Error(
+                        result?.error ||
+                        result?.message ||
+                        'Gagal membuat unlock link.'
+                    );
+                }
+
+                const generatedUrl =
+                    result.url;
+
+                resultUrl.textContent =
+                    generatedUrl;
+
+                openButton.href =
+                    generatedUrl;
+
+                resultSection.classList.remove(
+                    'hidden'
+                );
+
+                resultSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+                showToast(
+                    'Unlock link berhasil dibuat.'
+                );
+
+            } catch (error) {
+                showToast(
+                    error.message ||
+                    'Terjadi kesalahan.'
+                );
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        copyButton.addEventListener(
+            'click',
+            async () => {
+                const value =
+                    resultUrl.textContent.trim();
+
+                if (!value) {
+                    return;
+                }
+
+                try {
+                    await navigator.clipboard
+                        .writeText(value);
+
+                    copyButton.textContent =
+                        '✓ Copied';
+
+                    setTimeout(() => {
+                        copyButton.textContent =
+                            'Copy Link';
+                    }, 1800);
+
+                } catch {
+                    showToast(
+                        'Gagal menyalin link.'
+                    );
+                }
+            }
+        );
+
+        function setLoading(state) {
+            submitButton.disabled =
+                state;
+
+            if (state) {
+                submitText.classList.add(
+                    'hidden'
+                );
+
+                submitLoading.classList.remove(
+                    'hidden'
+                );
+
+                submitLoading.classList.add(
+                    'flex'
+                );
+            } else {
+                submitText.classList.remove(
+                    'hidden'
+                );
+
+                submitLoading.classList.add(
+                    'hidden'
+                );
+
+                submitLoading.classList.remove(
+                    'flex'
+                );
+            }
+        }
+
+        updateWhatsAppFields();
+        renderRequirements();
+    </script>
+
+</body>
+</html>
